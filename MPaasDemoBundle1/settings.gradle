@@ -1,0 +1,2 @@
+include ':api', ':mpaasdemobundle1-build'
+project(':mpaasdemobundle1-build').projectDir = new File('app')
