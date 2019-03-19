@@ -32,6 +32,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.test1:
+
                 test();
                 break;
             default:
