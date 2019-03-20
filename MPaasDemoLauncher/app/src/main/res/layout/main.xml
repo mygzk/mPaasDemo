@@ -14,4 +14,14 @@
         android:text="test1"
         android:textColor="#fff"
         android:textSize="16sp" />
+    <TextView
+        android:id="@+id/test2"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:background="#123"
+        android:gravity="center"
+        android:text="test2"
+        android:textColor="#fff"
+        android:textSize="16sp" />
 </LinearLayout>

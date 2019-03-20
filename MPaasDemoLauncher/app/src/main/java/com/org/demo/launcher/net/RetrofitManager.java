@@ -2,6 +2,7 @@ package com.org.demo.launcher.net;
 
 import android.os.Environment;
 
+import com.alipay.mobile.framework.LauncherApplicationAgent;
 import com.org.demo.launcher.net.fast.FastJsonConverterFactory;
 
 import java.io.File;
@@ -57,7 +58,7 @@ public class RetrofitManager {
                 .addInterceptor(new LoggingInterceptor())
                 .addNetworkInterceptor(new CacheInterceptor())
                 //暂时这样处理
-                // .sslSocketFactory(HttpsFactory.getSSLSocketFactory(App.getApp(), HttpConfig.certificates))
+                 .sslSocketFactory(HttpsFactory.getSSLSocketFactory(LauncherApplicationAgent.getInstance().getApplicationContext(), HttpConfig.certificates))
                 .hostnameVerifier(new HttpsHostnameVerifier(HttpConfig.BASE_URLS))
                 .build();
     }

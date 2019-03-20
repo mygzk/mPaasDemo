@@ -1,6 +1,8 @@
 package com.org.demo.launcher.net;
 
 
+import com.org.demo.launcher.R;
+
 /**
  * Created by guozhk on 2018/4/17.
  */
@@ -16,6 +18,5 @@ public class HttpConfig {
     public static final String[] BASE_URLS = new String[]{BASE_URL};
 
 
-    /*public static final int[] certificates = {R.raw.gangpiaowang, R.raw.gangpiaowang_old,
-            R.raw.gangpiaowang_new, R.raw.gangpiaowang_test_new, R.raw.gpw_test};*/
+    public static final int[] certificates = {R.raw.dangdang};
 }

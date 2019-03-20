@@ -25,6 +25,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private void initView() {
 
         findViewById(R.id.test1).setOnClickListener(this);
+        findViewById(R.id.test2).setOnClickListener(this);
     }
 
 
@@ -35,13 +36,34 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
                 test();
                 break;
+            case R.id.test2:
+                testLogin();
+                break;
             default:
                 break;
         }
     }
 
-    private void test() {
+    private void testLogin() {
         TestServiceManager.getInstance().login(new NetCallback<TestEnty>() {
+
+            @Override
+            public void result(TestEnty testEnty) {
+
+                Log.e("log", "-----testEnty---");
+
+            }
+
+            @Override
+            public void fail(String msg) {
+                Log.e("log", "-----msg---" + msg);
+            }
+        });
+
+    }
+
+    private void test() {
+        TestServiceManager.getInstance().test(new NetCallback<TestEnty>() {
 
             @Override
             public void result(TestEnty testEnty) {

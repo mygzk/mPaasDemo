@@ -1,6 +1,5 @@
 package com.org.demo.launcher.net.down;
 
-import com.org.rxsimple.net.NetCallback;
 
 /**
  * Create by guozhk

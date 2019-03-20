@@ -2,12 +2,11 @@ package com.org.demo.launcher.net.down;
 
 import android.text.TextUtils;
 
-import com.org.rxsimple.net.CacheInterceptor;
-import com.org.rxsimple.net.DefaultTransformer;
-import com.org.rxsimple.net.HttpConfig;
-import com.org.rxsimple.net.HttpLogger;
-import com.org.rxsimple.net.HttpsHostnameVerifier;
-import com.org.rxsimple.net.LoggingInterceptor;
+
+import com.org.demo.launcher.net.DefaultTransformer;
+import com.org.demo.launcher.net.HttpConfig;
+import com.org.demo.launcher.net.HttpLogger;
+import com.org.demo.launcher.net.fast.FastJsonConverterFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,7 +22,6 @@ import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Create by guozhk
@@ -50,10 +48,10 @@ public class DownLoadManager {
 
     private void initRetrofit(IProcessListener listener) {
         mRetrofit = new Retrofit.Builder()
-                .baseUrl(HttpConfig.BASE_URL1)
+                .baseUrl(HttpConfig.BASE_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(getOkhttp(listener))
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(FastJsonConverterFactory.create())
                 .build();
     }
 

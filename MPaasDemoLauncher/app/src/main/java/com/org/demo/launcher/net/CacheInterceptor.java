@@ -2,8 +2,10 @@ package com.org.demo.launcher.net;
 
 import android.util.Log;
 
-import com.org.rxsimple.App;
-import com.org.rxsimple.NetUtil;
+
+import com.alipay.mobile.framework.LauncherApplicationAgent;
+import com.org.demo.launcher.App;
+import com.org.demo.launcher.agent.ApplicationAgent;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -28,7 +30,7 @@ public class CacheInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Log.e(TAG, "=====CacheInter+ceptor====");
         Request request = chain.request();
-        if (!NetUtil.isNetworkAvalible(App.getApp().getApplicationContext())) {
+        if (!NetUtil.isNetworkAvalible(LauncherApplicationAgent.getInstance().getApplicationContext())) {
             request = request.newBuilder()
                     .cacheControl(CacheControl.FORCE_CACHE)
                     .build();
@@ -44,7 +46,7 @@ public class CacheInterceptor implements Interceptor {
 
         Response response = chain.proceed(request);
 
-        if (NetUtil.isNetworkAvalible(App.getApp().getApplicationContext())) {
+        if (NetUtil.isNetworkAvalible(ApplicationAgent.getInstance().getApplicationContext())) {
             response.newBuilder()
                     .header("Cache-Control", "public,max-age=" + MAXAGE_NET)
                     .removeHeader("Pragma")
